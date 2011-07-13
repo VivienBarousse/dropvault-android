@@ -3,12 +3,6 @@
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
     <modelVersion>4.0.0</modelVersion>
     
-    <parent>
-        <artifactId>dropvault</artifactId>
-        <groupId>com.aperigeek.dropvault</groupId>
-        <version>1.0-SNAPSHOT</version>
-    </parent>
-    
     <groupId>com.aperigeek.dropvault</groupId>
     <artifactId>dropvault-android</artifactId>
     <version>1.0-SNAPSHOT</version>
