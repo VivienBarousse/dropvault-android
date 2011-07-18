@@ -54,7 +54,7 @@ public class AndroidFilesService extends AbstractFilesService implements FilesSe
         return prefs.getString("baseURI", null);
     }
     
-    protected void setBaseURI(String baseUri) {
+    protected void storeBaseURI(String baseUri) {
         SharedPreferences prefs = context.getSharedPreferences("URI_PREFS", 0);
         prefs.edit()
                 .putString("baseURI", baseUri)
