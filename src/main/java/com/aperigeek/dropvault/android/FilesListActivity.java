@@ -141,16 +141,16 @@ public class FilesListActivity extends ListActivity {
         } else {
             new AlertDialog.Builder(this)
                     .setIcon(android.R.drawable.ic_dialog_alert)
-                    .setTitle("Sync over mobile network")
-                    .setMessage("Are you sure you want to sync over mobile network?")
-                    .setPositiveButton("Yes", new OnClickListener() {
+                    .setTitle(getString(R.string.files_mobilesync_confirm_title))
+                    .setMessage(getString(R.string.files_mobilesync_confirm_text))
+                    .setPositiveButton(getString(R.string.files_mobilesync_confirm_yes), new OnClickListener() {
 
                         public void onClick(DialogInterface di, int i) {
                             startService(new Intent(FilesListActivity.this, SyncService.class));
                             registerAdapter();
                         }
 
-                    }).setNegativeButton("No", null).show();
+                    }).setNegativeButton(getString(R.string.files_mobilesync_confirm_no), null).show();
         }
     }
 

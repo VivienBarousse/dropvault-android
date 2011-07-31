@@ -17,6 +17,11 @@
     <string name="files_delete_confirm_yes">Yes</string>
     <string name="files_delete_confirm_no">No</string>
     
+    <string name="files_mobilesync_confirm_title">Sync over mobile network</string>
+    <string name="files_mobilesync_confirm_text">Are you sure you want to sync over mobile network?</string>
+    <string name="files_mobilesync_confirm_yes">Yes</string>
+    <string name="files_mobilesync_confirm_no">No</string>
+    
     <string name="settings_account">Account details</string>
     
     <string name="settings_username_title">Username</string>
