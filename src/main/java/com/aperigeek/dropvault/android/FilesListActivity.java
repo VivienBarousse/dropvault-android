@@ -203,9 +203,9 @@ public class FilesListActivity extends ListActivity {
             case R.id.files_context_delete:
                 new AlertDialog.Builder(this)
                         .setIcon(android.R.drawable.ic_dialog_alert)
-                        .setTitle("Delete")
-                        .setMessage("Are you sure you want to delete '" + resource.getName() + "'?")
-                        .setPositiveButton("Yes", new OnClickListener() {
+                        .setTitle(getString(R.string.files_delete_confirm_title))
+                        .setMessage(getString(R.string.files_delete_confirm_text, resource.getName()))
+                        .setPositiveButton(getString(R.string.files_delete_confirm_yes), new OnClickListener() {
 
                             public void onClick(DialogInterface di, int i) {
                                 service.delete(resource);
@@ -213,7 +213,7 @@ public class FilesListActivity extends ListActivity {
                             }
                     
                         })
-                        .setNegativeButton("No", null).show();
+                        .setNegativeButton(getString(R.string.files_delete_confirm_no), null).show();
                 return true;
         }
         return super.onContextItemSelected(item);

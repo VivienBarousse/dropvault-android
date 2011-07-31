@@ -12,6 +12,11 @@
     <string name="files_context_edit">Edit</string>
     <string name="files_context_delete">Delete</string>
     
+    <string name="files_delete_confirm_title">Delete</string>
+    <string name="files_delete_confirm_text">Are you sure you want to delete \'%s\'?</string>
+    <string name="files_delete_confirm_yes">Yes</string>
+    <string name="files_delete_confirm_no">No</string>
+    
     <string name="settings_account">Account details</string>
     
     <string name="settings_username_title">Username</string>
