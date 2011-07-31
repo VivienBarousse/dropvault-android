@@ -23,6 +23,8 @@ import android.content.DialogInterface;
 import android.content.DialogInterface.OnClickListener;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
 import android.net.Uri;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
@@ -114,13 +116,42 @@ public class FilesListActivity extends ListActivity {
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
             case R.id.files_menu_refresh:
-                startService(new Intent(this, SyncService.class));
+                confirmSync();
                 return true;
             case R.id.files_menu_settings:
                 startActivity(new Intent(this, SettingsActivity.class));
                 return true;
         }
         return super.onOptionsItemSelected(item);
+    }
+    
+    private void confirmSync() {
+        ConnectivityManager connectivityManager = 
+                (ConnectivityManager) getSystemService(CONNECTIVITY_SERVICE);
+        
+        boolean safe = false;
+        
+        NetworkInfo activeNetwork = connectivityManager.getActiveNetworkInfo();
+        if (activeNetwork != null && activeNetwork.getType() == ConnectivityManager.TYPE_WIFI) {
+            safe = true;
+        }
+        
+        if (safe) {
+            startService(new Intent(FilesListActivity.this, SyncService.class));
+        } else {
+            new AlertDialog.Builder(this)
+                    .setIcon(android.R.drawable.ic_dialog_alert)
+                    .setTitle("Sync over mobile network")
+                    .setMessage("Are you sure you want to sync over mobile network?")
+                    .setPositiveButton("Yes", new OnClickListener() {
+
+                        public void onClick(DialogInterface di, int i) {
+                            startService(new Intent(FilesListActivity.this, SyncService.class));
+                            registerAdapter();
+                        }
+
+                    }).setNegativeButton("No", null).show();
+        }
     }
 
     @Override
