@@ -132,7 +132,13 @@ public class FilesListActivity extends ListActivity {
         boolean safe = false;
         
         NetworkInfo activeNetwork = connectivityManager.getActiveNetworkInfo();
-        if (activeNetwork != null && activeNetwork.getType() == ConnectivityManager.TYPE_WIFI) {
+        if (activeNetwork == null) {
+            Toast toast = Toast.makeText(this, "No network connection", 5);
+            toast.show();
+            return;
+        }
+        
+        if (activeNetwork.getType() == ConnectivityManager.TYPE_WIFI) {
             safe = true;
         }
         
